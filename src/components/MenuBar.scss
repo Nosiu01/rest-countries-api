@@ -1,0 +1,36 @@
+@use '../typography' as *;
+
+header.site-header {
+	width: 100%;
+	padding: var(--spacing-200) var(--spacing-400);
+	background-color: var(--color-blue-900);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	color: var(--color-white);
+}
+
+.site-header h1 {
+	@include text-preset-4-semibold;
+}
+
+.site-header .right {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-100);
+	@include text-preset-6-semibold;
+}
+
+@media screen and (width > 576px) {
+	header.site-header {
+		padding: var(--spacing-300) var(--spacing-1000);
+	}
+	
+	.site-header h1 {
+		@include text-preset-2;
+	}
+
+	.site-header .right {
+		@include text-preset-4-semibold;
+	}
+}
