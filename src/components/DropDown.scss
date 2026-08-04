@@ -1,0 +1,62 @@
+@use '../typography' as *;
+
+.dropdown {
+	position: relative;
+	width: fit-content;
+}
+
+.dropdown__toggle {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--spacing-100);
+	width: 200px;
+	padding: var(--spacing-200) var(--spacing-300);
+	border: none;
+	border-radius: 5px;
+	background-color: var(--color-blue-900);
+	color: var(--color-white);
+	cursor: pointer;
+	@include text-preset-6-regular;
+}
+
+.dropdown__toggle svg {
+	flex-shrink: 0;
+	width: 16px;
+	height: 16px;
+	transition: transform 0.2s ease;
+}
+
+.dropdown__toggle.is-open svg {
+	transform: rotate(180deg);
+}
+
+.dropdown__menu {
+	position: absolute;
+	top: calc(100% + var(--spacing-100));
+	left: 0;
+	width: 200px;
+	padding: var(--spacing-200) 0;
+	border-radius: 8px;
+	background-color: var(--color-blue-900);
+	list-style: none;
+	margin: 0;
+}
+
+.dropdown__item {
+	padding: var(--spacing-100) var(--spacing-300);
+	color: var(--color-white);
+	cursor: pointer;
+	@include text-preset-6-regular;
+}
+
+.dropdown__item:hover {
+	background-color: var(--color-blue-900);
+}
+
+@media screen and (width > 576px) {
+	.dropdown__toggle,
+	.dropdown__item {
+		@include text-preset-5-regular;
+	}
+}

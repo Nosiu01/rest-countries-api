@@ -1,0 +1,22 @@
+section.home-page {
+	padding: var(--spacing-400) var(--spacing-200);
+}
+
+.upper-bar {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-500);
+}
+
+@media screen and (width > 576px) {
+	.upper-bar {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}
+
+@media screen and (width > 992px) {
+	section.home-page {
+		padding: var(--spacing-400) var(--spacing-1000);
+	}
+}
