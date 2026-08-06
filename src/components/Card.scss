@@ -1,0 +1,39 @@
+@use '../typography' as *;
+
+.country-card {
+	display: block;
+	width: 264px;
+	border-radius: 5px;
+	overflow: hidden;
+	background-color: var(--color-blue-900);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	text-decoration: none;
+}
+
+.country-card__flag {
+	width: 100%;
+	height: 160px;
+	object-fit: cover;
+	display: block;
+}
+
+.country-card__body {
+	padding: var(--spacing-300);
+    padding-bottom: var(--spacing-600);
+}
+
+.country-card__name {
+	color: var(--color-white);
+	margin: 0 0 var(--spacing-200) 0;
+	@include text-preset-3;
+}
+
+.country-card__info {
+	color: var(--color-white);
+	margin: 0;
+	@include text-preset-5-light;
+}
+
+.country-card__info strong {
+	font-weight: 600;
+}

@@ -8,9 +8,29 @@ section.home-page {
 	gap: var(--spacing-500);
 }
 
+.country-list {
+	list-style-type: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: var(--spacing-500);
+	padding: var(--spacing-400) 0;
+}
+
 @media screen and (width > 576px) {
 	.upper-bar {
 		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.country-list {
+		gap: var(--spacing-900);
+	}
+}
+
+@media screen and (width > 768px) {
+	.country-list {
 		justify-content: space-between;
 	}
 }
