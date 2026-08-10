@@ -1,0 +1,158 @@
+@use '../typography' as *;
+@use "../transition.scss" as *;
+
+.country-details {
+	padding: var(--spacing-500) var(--spacing-300);
+	background-color: var(--color-blue-950);
+	min-height: 100vh;
+	color: var(--color-white);
+	@include transition;
+}
+
+.back-button {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-100);
+	padding: var(--spacing-100) var(--spacing-400);
+	border: none;
+	border-radius: 2px;
+	background-color: var(--color-blue-900);
+	color: var(--color-white);
+	margin-bottom: var(--spacing-800);
+	width: max-content;
+	box-shadow: var(--box-shadow);
+	cursor: pointer;
+	@include text-preset-5-light;
+	@include transition;
+
+	&:hover {
+		scale: 1.05;
+	}
+
+	svg {
+		width: 20px;
+		height: 20px;
+	}
+}
+
+.country-content {
+	display: block;
+	margin: 0;
+}
+
+.country-flag {
+	width: 100%;
+	max-width: 400px;
+	display: block;
+	border-radius: 5px;
+	margin-bottom: var(--spacing-600);
+}
+
+.country-info {
+	flex: 1;
+	min-width: 280px;
+	width: fit-content;
+}
+
+.country-info h1 {
+	margin: 0 0 var(--spacing-200) 0;
+	@include text-preset-2;
+}
+
+.country-meta {
+	display: flex;
+	gap: var(--spacing-400);
+	flex-wrap: wrap;
+	margin-bottom: var(--spacing-400);
+}
+
+.country-meta__col {
+	margin: 0;
+}
+
+.country-meta__row {
+	display: flex;
+	gap: var(--spacing-100);
+	margin-bottom: var(--spacing-100);
+	@include text-preset-5-light;
+}
+
+.country-meta__row dt {
+	font-weight: 600;
+}
+
+.country-meta__row dd {
+	margin: 0;
+}
+
+.country-borders {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-200);
+	flex-wrap: wrap;
+}
+
+.country-borders__label {
+	font-weight: 600;
+	@include text-preset-4-semibold;
+}
+
+.country-borders__list {
+	display: flex;
+	gap: var(--spacing-100);
+	flex-wrap: wrap;
+}
+
+.country-borders__item {
+	padding: var(--spacing-100) var(--spacing-400);
+	border-radius: 2px;
+	background-color: var(--color-blue-900);
+	color: var(--color-white);
+	text-decoration: none;
+	box-shadow: var(--box-shadow);
+	@include text-preset-6-light;
+	@include transition;
+
+	&:hover {
+		scale: 1.05;
+	}
+}
+
+@media screen and (width > 992px) {
+	.country-details {
+		padding: var(--spacing-1000);
+	}
+
+	.country-content {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.country-flag {
+		max-width: 560px;
+	}
+
+	.country-info {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-self: center;
+		margin-left: 10%;
+	}
+
+	.country-info h1 {
+		@include text-preset-1;
+	}
+
+	.country-meta__row {
+		@include text-preset-4-light;
+	}
+
+	.country-borders__label {
+		@include text-preset-3;
+	}
+
+	.country-borders__item {
+		@include text-preset-5-light;
+	}
+}

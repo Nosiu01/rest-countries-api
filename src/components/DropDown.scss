@@ -1,8 +1,11 @@
 @use '../typography' as *;
+@use "../transition.scss" as *;
 
 .dropdown {
 	position: relative;
 	width: fit-content;
+	box-shadow: var(--box-shadow);
+	@include transition;
 }
 
 .dropdown__toggle {

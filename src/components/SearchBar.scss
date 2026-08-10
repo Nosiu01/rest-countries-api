@@ -1,4 +1,5 @@
 @use '../typography' as *;
+@use "../transition.scss" as *;
 
 .search-bar {
 	display: flex;
@@ -8,6 +9,8 @@
 	padding: var(--spacing-200) var(--spacing-400);
 	border-radius: 5px;
 	background-color: var(--color-blue-900);
+	box-shadow: var(--box-shadow);
+	@include transition;
 }
 
 .search-bar svg {

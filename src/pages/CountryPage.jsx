@@ -1,4 +1,6 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
+import "./CountryPage.scss";
 
 export default function CountryPage({ countries }) {
 	const { alpha3Code } = useParams();
@@ -17,6 +19,16 @@ export default function CountryPage({ countries }) {
 		);
 	}
 
+	const borderCountries = country.borders?.map((borderCode) => {
+		const borderCountry = countries.find(
+			(item) => item.alpha3Code.toUpperCase() === borderCode.toUpperCase()
+		);
+		return {
+			code: borderCode,
+			name: borderCountry?.name || borderCode,
+		};
+	});
+
 	return (
 		<section className='country-details'>
 			<button
@@ -24,50 +36,85 @@ export default function CountryPage({ countries }) {
 				className='back-button'
 				onClick={() => navigate(-1)}
 			>
-				← Powrót
+				<HiOutlineArrowNarrowLeft /> Back
 			</button>
-			<h1>{country.name}</h1>
-			<div className='country-meta'>
-				<dl>
-					<dt>Alpha3 Code</dt>
-					<dd>{country.alpha3Code}</dd>
-					<dt>Region</dt>
-					<dd>{country.region}</dd>
-					<dt>Subregion</dt>
-					<dd>{country.subregion || "Brak danych"}</dd>
-					<dt>Stolica</dt>
-					<dd>{country.capital || "Brak danych"}</dd>
-					<dt>Populacja</dt>
-					<dd>{country.population.toLocaleString("pl-PL")}</dd>
-					<dt>Waluty</dt>
-					<dd>
-						{country.currencies?.map((currency) => currency.name).join(", ") ||
-							"Brak danych"}
-					</dd>
-					<dt>Języki</dt>
-					<dd>
-						{country.languages?.map((language) => language.name).join(", ") ||
-							"Brak danych"}
-					</dd>
-				</dl>
+
+			<div className='country-content'>
+				<img
+					className='country-flag'
+					src={country.flags.png.toLowerCase()}
+					alt={`Flag of ${country.name}`}
+				/>
+
+				<div className='country-info'>
+					<h1>{country.name}</h1>
+
+					<div className='country-meta'>
+						<dl className='country-meta__col'>
+							<div className='country-meta__row'>
+								<dt>Native Name:</dt>
+								<dd>{country.nativeName || country.name}</dd>
+							</div>
+							<div className='country-meta__row'>
+								<dt>Population:</dt>
+								<dd>{country.population.toLocaleString()}</dd>
+							</div>
+							<div className='country-meta__row'>
+								<dt>Region:</dt>
+								<dd>{country.region}</dd>
+							</div>
+							<div className='country-meta__row'>
+								<dt>Sub Region:</dt>
+								<dd>{country.subregion || "Brak danych"}</dd>
+							</div>
+							<div className='country-meta__row'>
+								<dt>Capital:</dt>
+								<dd>{country.capital || "Brak danych"}</dd>
+							</div>
+						</dl>
+
+						<dl className='country-meta__col'>
+							<div className='country-meta__row'>
+								<dt>Top Level Domain:</dt>
+								<dd>{country.topLevelDomain?.join(", ") || "Brak danych"}</dd>
+							</div>
+							<div className='country-meta__row'>
+								<dt>Currencies:</dt>
+								<dd>
+									{country.currencies
+										?.map((currency) => currency.name)
+										.join(", ") || "Brak danych"}
+								</dd>
+							</div>
+							<div className='country-meta__row'>
+								<dt>Languages:</dt>
+								<dd>
+									{country.languages
+										?.map((language) => language.name)
+										.join(", ") || "Brak danych"}
+								</dd>
+							</div>
+						</dl>
+					</div>
+
+					{borderCountries?.length > 0 && (
+						<div className='country-borders'>
+							<span className='country-borders__label'>Border Countries:</span>
+							<div className='country-borders__list'>
+								{borderCountries.map((border) => (
+									<Link
+										key={border.code}
+										to={`/country/${border.code}`}
+										className='country-borders__item'
+									>
+										{border.name}
+									</Link>
+								))}
+							</div>
+						</div>
+					)}
+				</div>
 			</div>
-			<div className='country-borders'>
-				<h2>Granice</h2>
-				{country.borders?.length ? (
-					<ul>
-						{country.borders.map((borderCode) => (
-							<li key={borderCode}>
-								<Link to={`/country/${borderCode}`}>{borderCode}</Link>
-							</li>
-						))}
-					</ul>
-				) : (
-					<p>Brak granic lub dane niedostępne.</p>
-				)}
-			</div>
-			<p className='detail-home-link'>
-				<Link to='/'>Powrót do listy krajów</Link>
-			</p>
 		</section>
 	);
 }

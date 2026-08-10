@@ -4,9 +4,8 @@ import "./DropDown.scss";
 
 const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
 
-export default function Dropdown() {
+export default function Dropdown({ selected, onChange }) {
 	const [isOpen, setIsOpen] = useState(false);
-	const [selected, setSelected] = useState(null);
 
 	return (
 		<div className='dropdown'>
@@ -20,12 +19,21 @@ export default function Dropdown() {
 
 			{isOpen && (
 				<ul className='dropdown__menu'>
+					<li
+						className='dropdown__item'
+						onClick={() => {
+							onChange(null);
+							setIsOpen(false);
+						}}
+					>
+						All Regions
+					</li>
 					{regions.map((region) => (
 						<li
 							key={region}
 							className='dropdown__item'
 							onClick={() => {
-								setSelected(region);
+								onChange(region);
 								setIsOpen(false);
 							}}
 						>
