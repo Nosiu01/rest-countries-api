@@ -25,7 +25,7 @@ function App() {
 	};
 
 	return (
-		<BrowserRouter>
+		<BrowserRouter basename="/rest-countries-api">
 			<MenuBar theme={theme} onToggleTheme={handleToggleTheme} />
 			<main>
 				<Routes>
