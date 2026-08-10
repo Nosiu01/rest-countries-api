@@ -47,6 +47,10 @@
 }
 
 .dropdown__item {
+	background-color: transparent;
+	border: none;
+	width: 100%;
+	text-align: left;
 	padding: var(--spacing-100) var(--spacing-300);
 	color: var(--color-white);
 	cursor: pointer;
@@ -54,7 +58,7 @@
 }
 
 .dropdown__item:hover {
-	background-color: var(--color-blue-900);
+	background-color: var(--color-blue-950);
 }
 
 @media screen and (width > 576px) {

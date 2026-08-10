@@ -12,9 +12,9 @@ export default function CountryPage({ countries }) {
 	if (!country) {
 		return (
 			<section className='country-details not-found'>
-				<h1>Nie znaleziono kraju</h1>
-				<p>Sprawdź czy kod alpha3 jest poprawny.</p>
-				<Link to='/'>Wróć do strony głównej</Link>
+				<h1>Country not found</h1>
+				<p>Check to see if the alpha3 code is correct</p>
+				<Link to='/'>Return to the home page</Link>
 			</section>
 		);
 	}
@@ -47,7 +47,7 @@ export default function CountryPage({ countries }) {
 				/>
 
 				<div className='country-info'>
-					<h1>{country.name}</h1>
+					<h2 className="country-card__name">{country.name}</h2>
 
 					<div className='country-meta'>
 						<dl className='country-meta__col'>
@@ -65,25 +65,25 @@ export default function CountryPage({ countries }) {
 							</div>
 							<div className='country-meta__row'>
 								<dt>Sub Region:</dt>
-								<dd>{country.subregion || "Brak danych"}</dd>
+								<dd>{country.subregion || "N/A"}</dd>
 							</div>
 							<div className='country-meta__row'>
 								<dt>Capital:</dt>
-								<dd>{country.capital || "Brak danych"}</dd>
+								<dd>{country.capital || "N/A"}</dd>
 							</div>
 						</dl>
 
 						<dl className='country-meta__col'>
 							<div className='country-meta__row'>
 								<dt>Top Level Domain:</dt>
-								<dd>{country.topLevelDomain?.join(", ") || "Brak danych"}</dd>
+								<dd>{country.topLevelDomain?.join(", ") || "N/A"}</dd>
 							</div>
 							<div className='country-meta__row'>
 								<dt>Currencies:</dt>
 								<dd>
 									{country.currencies
 										?.map((currency) => currency.name)
-										.join(", ") || "Brak danych"}
+										.join(", ") || "N/A"}
 								</dd>
 							</div>
 							<div className='country-meta__row'>
@@ -91,7 +91,7 @@ export default function CountryPage({ countries }) {
 								<dd>
 									{country.languages
 										?.map((language) => language.name)
-										.join(", ") || "Brak danych"}
+										.join(", ") || "N/A"}
 								</dd>
 							</div>
 						</dl>

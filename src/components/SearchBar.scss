@@ -21,6 +21,20 @@
 	fill: currentColor;
 }
 
+.search-bar__label {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+.search-bar:focus-within {
+	outline: 2px solid var(--color-white);
+	outline-offset: 2px;
+}
+
 .search-bar input {
 	width: 100%;
 	border: none;

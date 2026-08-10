@@ -5,8 +5,12 @@ const SearchBar = ({ value, onChange }) => {
 	return (
 		<div className='search-bar'>
 			<IoIosSearch />
+			<label className='search-bar__label' htmlFor='country-search'>
+				Search for a country
+			</label>
 			<input
-				type='text'
+				id='country-search'
+				type='search'
 				placeholder='Search for a country...'
 				value={value}
 				onChange={(event) => onChange(event.target.value)}

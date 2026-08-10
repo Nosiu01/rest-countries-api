@@ -23,7 +23,9 @@ export default function Home({ countries }) {
 				<SearchBar value={searchTerm} onChange={setSearchTerm} />
 				<DropDown selected={selectedRegion} onChange={setSelectedRegion} />
 			</div>
-			{filteredCountries.length === 0 ? null : null}
+			{filteredCountries.length === 0 && (
+				<p className='country-list__empty'>No countries match your search</p>
+			)}
 			<ul className='country-list'>
 				{filteredCountries.map((country) => (
 					<li key={country.alpha3Code}>
